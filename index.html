@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MODA | Premium Fashion Store</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="text-gray-900 antialiased overflow-x-hidden">
+    
+
+    <!-- Product Data (Hidden) -->
+    <script id="product-data" type="application/json">
+    [
+        {
+            "id": 1,
+            "name": "Oversized Wool Coat",
+            "price": 249.00,
+            "category": "women",
+            "images": [
+                "https://www.mytheresa.com/media/1094/1238/100/be/P01067911.jpg",
+                "https://www.mytheresa.com/media/1094/1238/100/be/P01067911_b1.jpg",
+                "https://www.mytheresa.com/media/1094/1238/100/be/P01067911_b2.jpg"
+            ],
+            "badge": "New Season",
+            "liked": false
+        },
+        {
+            "id": 2,
+            "name": "Classic Linen Shirt",
+            "price": 89.00,
+            "category": "men",
+            "images": [
+                "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQQ5VnJTgjy5MC-TYVlXj6hJ8XdlTaGfJAQU4NAHApFmpIj2wzEUnk2mLIc1O3YzL24ZCTqo6U37HSVncwt03UTvKMEz4aB6jcIOAPeAIoBFRgbJaBAG6x3mOQ",
+                "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcR6ecw0SOV_5y1Z2o9SLLmxdF9DAOu6h-65Ag3x5VFEikQU7NJlRlMVNFdRNhYk0IoiBpSq-bfQwIZRiY7e_fXFjyE11uQ7TXleiTb1IlCC9OxUK7oUZKuN",
+                "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRUZ4KyJN2tjihtq31RjONOnBcu3DFuYSCcQcCxVS_qYRkCNkggEIjU90d9HoQOXc46JYEsU8rb3I_NERPn5Cx2wrgqQkmXOOXEzwUKFm9hERJ-UEZsm7dZzQ"
+            ],
+            "badge": null,
+            "liked": false
+        },
+        {
+            "id": 3,
+            "name": "Silk Evening Dress",
+            "price": 320.00,
+            "category": "women",
+            "images": [
+                "https://assets-cf.armani.com/image/upload/f_auto,q_auto:best,ar_4:5,w_1350,c_fill/EW000843_AF10209_UC001_F_SS2025.jpg",
+                "https://assets-cf.armani.com/image/upload/f_auto,q_auto:best,ar_4:5,w_1350,c_fill/EW000843_AF10209_UC001_D_SS2025.jpg",
+                "https://assets-cf.armani.com/image/upload/f_auto,q_auto:best,ar_4:5,w_1350,c_fill/EW000843_AF10209_UC001_A_SS2025.jpg"
+                
+                
+            ],
+            "badge": "Best Seller",
+            "liked": false
+        },
+        {
+            "id": 4,
+            "name": "Structured Blazer",
+            "price": 185.00,
+            "category": "women",
+            "images": [
+                "https://cdn.aboutstatic.com/file/images/0e55fd3e156bcfe3f2183e2d2e54b62d.jpg?brightness=0.96&quality=75&trim=1&height=1067&width=800",
+                "https://cdn.aboutstatic.com/file/images/612a8916b39eafae61188fc93b74990e.jpg?quality=75&height=1067&width=800",
+                "https://cdn.aboutstatic.com/file/images/99ec812c0e3da4381f6e1df91a90f5ad.jpg?quality=75&height=1067&width=800"
+            ],
+            "badge": null,
+            "liked": false
+        },
+        {
+            "id": 5,
+            "name": "Leather Chelsea Boots",
+            "price": 210.00,
+            "category": "accessories",
+            "images": [
+                "https://m.media-amazon.com/images/I/51K5iKnryXL._SY695_.jpg",
+                "https://m.media-amazon.com/images/I/61GT-AWX+NL._SY695_.jpg",
+                "https://m.media-amazon.com/images/I/61N-OWhhUnL._SY695_.jpg"
+            ],
+            "badge": "Limited",
+            "liked": false
+        },
+        {
+            "id": 6,
+            "name": "Minimalist Tote Bag",
+            "price": 145.00,
+            "category": "accessories",
+            "images": [
+                "https://www.linoperros.com/cdn/shop/files/LWHB02719OFFWHITE_1.webp?v=1749254500&width=1080",
+                "https://www.linoperros.com/cdn/shop/files/LWHB02719OFFWHITE_10.webp?v=1749254514&width=1080",
+                "https://www.linoperros.com/cdn/shop/files/LWHB02719OFFWHITE_11.webp?v=1749254516&width=1800"
+            ],
+            "badge": null,
+            "liked": false
+        },
+        {
+            "id": 7,
+            "name": "Raw Denim Jeans",
+            "price": 120.00,
+            "category": "men",
+            "images": [
+                "https://jimmyluxury.in/cdn/shop/files/IMG_4972_edc8f3f0-8306-4cd1-8967-4330db0d6162.jpg?v=1763808494&width=1000",
+                "https://jimmyluxury.in/cdn/shop/files/IMG_4973_7eac30ba-920e-4b8e-89a0-f4c37a291c51.jpg?v=1763808494&width=1000",
+                "https://jimmyluxury.in/cdn/shop/files/IMG_4963_02a190ed-890b-40b1-888e-697ec127097c.jpg?v=1763808494&width=1000"
+            ],
+            "badge": null,
+            "liked": false
+        },
+        {
+            "id": 8,
+            "name": "Cashmere Scarf",
+            "price": 75.00,
+            "category": "accessories",
+            "images": [
+                "https://m.media-amazon.com/images/I/6145PJY1vvL._SX679_.jpg",
+                "https://m.media-amazon.com/images/I/61prNfIsKdL._SY879_.jpg",
+                "https://m.media-amazon.com/images/I/61Usw7WMYiL._SY741_.jpg"
+            ],
+            "badge": "Winter Essential",
+            "liked": false
+        }
+    ]
+    </script>
+
+    <!-- Hero Image -->
+    <div id="hero-image" data-src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" style="display:none;"></div>
+
+    <!-- Loader -->
+    <div class="loader">
+        <div class="text-center">
+            <h1 class="text-5xl md:text-7xl mb-2 tracking-widest overflow-hidden">
+                <span class="inline-block translate-y-full">MODA</span>
+            </h1>
+            <p class="text-gray-400 text-sm tracking-[0.2em] opacity-0">EST. 2025</p>
+        </div>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="image-modal" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-md flex justify-center items-center opacity-0 transition-opacity duration-300" onclick="closeImageModal()">
+        <button class="absolute top-6 right-6 text-white text-4xl hover:text-gray-300 transition-colors z-50 transform hover:rotate-90 transition-transform duration-300">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <button onclick="event.stopPropagation(); changeModalImage(-1)" class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-5xl transition-colors z-50">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button onclick="event.stopPropagation(); changeModalImage(1)" class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white text-5xl transition-colors z-50">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+
+        <div class="relative w-full h-full max-w-7xl max-h-[90vh] flex flex-col justify-center items-center p-4 sm:p-12" onclick="event.stopPropagation()">
+            <img id="modal-img" src="" class="max-w-full max-h-[85vh] object-contain shadow-2xl rounded-sm transform scale-95 opacity-0">
+            <div id="modal-dots" class="flex gap-2 mt-6"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 nav-blur transition-all duration-300">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-center h-20 lg:h-24">
+                <button class="lg:hidden text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <a href="#" class="serif-font text-3xl lg:text-4xl font-extrabold tracking-tighter  text-black">MODA.</a>
+                
+                <div class="hidden lg:flex items-center gap-12 text-sm font-bold uppercase tracking-widest text-gray-800">
+                    <a href="#" class="hover:text-black transition-colors relative group">
+                        New In
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#women" class="hover:text-black transition-colors relative group">
+                        Women
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#men" class="hover:text-black transition-colors relative group">
+                        Men
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <a href="#collection" class="hover:text-black transition-colors relative group">
+                        Edits
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </div>
+                
+                <div class="flex items-center gap-6 lg:gap-8">
+                    <button class="hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-search text-lg"></i>
+                    </button>
+                    <button id="cart-btn" class="relative hover:scale-110 transition-transform duration-300 group">
+                        <div class="relative">
+                            <i class="fas fa-shopping-bag text-lg"></i>
+                            <span id="cart-count" class="absolute -top-2 -right-2 bg-black text-white text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center scale-0 transition-transform duration-300">0</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-16 lg:pt-48 lg:pb-32 overflow-hidden bg-[#f8f8f8]">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-white skew-x-12 translate-x-20 opacity-50 z-0 pointer-events-none"></div>
+
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+                <div class="lg:col-span-6 relative z-20 hero-content opacity-0 translate-y-10">
+                    <div class="inline-block bg-black text-white text-[10px] font-bold uppercase tracking-[0.3em] px-3 py-1 mb-6">New Collection</div>
+                    <h1 class="text-7xl lg:text-[7rem] leading-[0.85] mb-8 text-black font-extrabold uppercase tracking-tighter">
+                        Urban <br>
+                        <span class="serif-font italic font-normal text-6xl lg:text-[6.5rem] tracking-normal">Aesthetics</span>
+                    </h1>
+                    <p class="text-lg text-gray-500 mb-10 max-w-md leading-relaxed font-medium">
+                        Redefining the silhouette for the contemporary era. Minimalist cuts, premium fabrics, and sustainable practices.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-6">
+                        <a href="#products" class="group relative overflow-hidden bg-black text-white px-10 py-5 font-bold uppercase tracking-widest text-sm transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                            <span class="relative z-10">Shop Collection</span>
+                            <div class="absolute inset-0 bg-gray-800 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+                        </a>
+                        <a href="#" class="group flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:text-gray-600 transition-colors">
+                            <span class="border-b border-black pb-1 group-hover:border-gray-600">Lookbook</span>
+                            <i class="fas fa-arrow-right -rotate-45 group-hover:rotate-0 transition-transform duration-300"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="lg:col-span-6 relative hero-image opacity-0">
+                    <div class="relative z-10">
+                        <img id="hero-main-img" src="" alt="Hero Fashion" class="w-full h-[650px] object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-in-out shadow-2xl">
+                        
+                        <div class="absolute -bottom-10 -left-10 glass-panel p-6 max-w-xs hidden lg:block animate-float">
+                            <p class="serif-font text-2xl mb-1">Summer Edit</p>
+                            <p class="text-xs text-gray-500 uppercase tracking-widest">Available Now</p>
+                        </div>
+                    </div>
+                    <div class="absolute -top-10 -right-10 w-full h-full border-2 border-black/5 z-0"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="border-y border-gray-200 py-6 overflow-hidden bg-white">
+        <div class="flex gap-16 whitespace-nowrap marquee-content text-sm font-bold tracking-[0.2em] uppercase text-gray-400">
+            <span>Free Worldwide Shipping</span>
+            <span>•</span>
+            <span>Sustainable Materials</span>
+            <span>•</span>
+            <span>New Arrivals Daily</span>
+            <span>•</span>
+            <span>Premium Quality</span>
+            <span>•</span>
+            <span>Free Worldwide Shipping</span>
+            <span>•</span>
+            <span>Sustainable Materials</span>
+            <span>•</span>
+            <span>New Arrivals Daily</span>
+            <span>•</span>
+            <span>Premium Quality</span>
+            <span>•</span>
+            <span>Free Worldwide Shipping</span>
+            <span>•</span>
+            <span>Sustainable Materials</span>
+            <span>•</span>
+            <span>New Arrivals Daily</span>
+            <span>•</span>
+            <span>Premium Quality</span>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <section id="products" class="py-24 bg-white">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <h2 class="text-4xl lg:text-5xl mb-4 section-title opacity-0 translate-y-5">Curated Pieces</h2>
+                    <div class="flex flex-wrap gap-2 product-filters opacity-0 translate-y-5">
+                        <button class="filter-btn active text-sm px-6 py-2 border border-black bg-black text-white transition-all hover:opacity-80" data-filter="all">All</button>
+                        <button class="filter-btn text-sm px-6 py-2 border border-gray-200 text-gray-600 hover:border-black hover:text-black transition-all" data-filter="women">Women</button>
+                        <button class="filter-btn text-sm px-6 py-2 border border-gray-200 text-gray-600 hover:border-black hover:text-black transition-all" data-filter="men">Men</button>
+                        <button class="filter-btn text-sm px-6 py-2 border border-gray-200 text-gray-600 hover:border-black hover:text-black transition-all" data-filter="accessories">Accessories</button>
+                    </div>
+                </div>
+                <div class="text-right hidden md:block section-title opacity-0 translate-y-5">
+                    <p class="text-gray-500 max-w-xs text-sm">Selection of our most coveted items for the season. Designed for longevity.</p>
+                </div>
+            </div>
+
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-16 gap-x-6 lg:gap-x-10"></div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-32 bg-black text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-gray-800 rounded-full blur-[120px] opacity-30"></div>
+        <div class="absolute bottom-0 left-0 translate-y-1/2 w-[600px] h-[600px] bg-gray-800 rounded-full blur-[120px] opacity-30"></div>
+
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-[0.3em] mb-4 block">Newsletter</span>
+                    <h2 class="text-5xl lg:text-7xl mb-6 font-extrabold uppercase tracking-tighter leading-none">
+                        Stay in the <br> <span class="text-gray-600">Know</span>
+                    </h2>
+                    <p class="text-gray-400 text-lg max-w-md">Sign up for exclusive early access to drops, special offers, and editorial content directly to your inbox.</p>
+                </div>
+                <div>
+                    <form class="flex flex-col gap-6 max-w-md ml-auto">
+                        <div class="relative">
+                            <input type="email" placeholder="Email Address" class="w-full bg-transparent border-b border-gray-700 text-white py-4 text-xl focus:outline-none focus:border-white transition-colors placeholder-gray-600">
+                            <i class="fas fa-arrow-right absolute right-0 top-1/2 -translate-y-1/2 text-gray-600"></i>
+                        </div>
+                        <div class="flex items-start gap-3 mt-2">
+                            <div class="w-4 h-4 mt-1 border border-gray-600 rounded-sm flex-shrink-0 cursor-pointer"></div>
+                            <p class="text-xs text-gray-500 leading-relaxed">By signing up, you agree to our Terms and Privacy Policy. You can unsubscribe at any time.</p>
+                        </div>
+                        <button type="button" class="mt-4 bg-white text-black py-4 px-8 font-bold uppercase tracking-widest text-sm hover:bg-gray-200 transition-colors w-max self-start">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white text-gray-900 pt-20 pb-10 border-t border-gray-100">
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="md:col-span-1">
+                    <a href="#" class="serif-font text-3xl font-bold tracking-wider block mb-6">MODA</a>
+                    <p class="text-gray-500 text-sm leading-relaxed max-w-xs">
+                        Redefining modern luxury through sustainable practices and timeless design.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 text-sm uppercase tracking-widest">Shop</h4>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-black transition-colors">New Arrivals</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Women</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Men</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Accessories</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 text-sm uppercase tracking-widest">Company</h4>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-black transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Sustainability</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 text-sm uppercase tracking-widest">Connect</h4>
+                    <ul class="space-y-4 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-black transition-colors">Instagram</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Pinterest</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Twitter</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Facebook</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400">
+                <p>&copy; 2025 MODA Fashion. All rights reserved.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <span>Privacy Policy</span>
+                    <span>Cookie Policy</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black/40 z-[60] hidden opacity-0 transition-opacity duration-300 backdrop-blur-sm"></div>
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full sm:w-[450px] bg-white z-[70] shadow-2xl cart-sidebar flex flex-col">
+        <div class="p-8 flex justify-between items-center border-b border-gray-100">
+            <h2 class="serif-font text-2xl">Shopping Cart</h2>
+            <button id="close-cart" class="text-gray-400 hover:text-black transition-colors p-2">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        
+        <div id="cart-items" class="flex-1 overflow-y-auto p-8 space-y-8 hide-scrollbar">
+            <div id="empty-cart-msg" class="flex flex-col items-center justify-center h-full text-center text-gray-400">
+                <p class="serif-font text-2xl mb-2">Your cart is empty</p>
+                <p class="text-sm mb-6">Looks like you haven't added anything yet.</p>
+                <button id="start-shopping" class="text-black border-b border-black pb-1 hover:opacity-60 transition-opacity">Start Shopping</button>
+            </div>
+        </div>
+
+        <div class="p-8 border-t border-gray-100 bg-gray-50/50">
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-gray-600">Subtotal</span>
+                <span id="cart-subtotal" class="text-xl font-medium">$0.00</span>
+            </div>
+            <p class="text-xs text-gray-400 mb-6">Shipping, taxes, and discounts calculated at checkout.</p>
+            <button id="checkout-btn" class="w-full bg-black text-white py-4 font-medium hover:bg-gray-800 transition-colors flex justify-between px-6 items-center group" onclick="window.location.href='payment.html'">
+                <a>checkout</a>
+                <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed top-24 right-6 bg-white border border-gray-100 shadow-xl p-4 flex items-center gap-4 z-[80] translate-x-[120%] transition-transform duration-500 max-w-sm">
+        <div class="w-12 h-16 bg-gray-100 flex-shrink-0">
+            <img id="toast-img" src="" class="w-full h-full object-cover">
+        </div>
+        <div>
+            <h4 class="font-medium text-sm">Added to Bag</h4>
+            <p id="toast-message" class="text-xs text-gray-500 mt-1 truncate max-w-[200px]"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

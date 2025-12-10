@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | MODA</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<style>
+     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+        }
+        
+        h1, h2, h3, .serif-font {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+        }
+
+        /* Input animation */
+        .input-group:focus-within label {
+            color: #000;
+        }
+        .input-group:focus-within input {
+            border-color: #000;
+        }
+</style>
+<body class="text-gray-900 antialiased bg-[#f8f8f8]">
+    
+    <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full bg-white p-10 shadow-[0_35px_60px_-15px_rgba(0,0,0,0.1)] relative">
+            
+            <div class="text-center mb-12">
+                <a href="index.html" class="serif-font text-4xl font-extrabold tracking-tighter mb-4 block">MODA.</a>
+                <div class="flex items-center justify-center gap-2">
+                    <i class="fas fa-lock text-xs text-green-600"></i>
+                    <h2 class="text-xs uppercase tracking-[0.2em] font-bold text-gray-400">Encrypted Payment</h2>
+                </div>
+            </div>
+            
+            <form class="space-y-8" onsubmit="event.preventDefault(); processPayment();">
+                <div class="space-y-6">
+                    <div class="input-group group">
+                        <label for="card-number" class="block text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 transition-colors group-focus-within:text-black">Card Number</label>
+                        <div class="relative">
+                            <input id="card-number" name="card-number" type="text" required class="block w-full border-b border-gray-200 py-3 text-lg font-medium text-gray-900 placeholder-gray-200 focus:outline-none focus:border-black transition-colors bg-transparent" placeholder="0000 0000 0000 0000">
+                            <div class="absolute right-0 top-3 flex gap-2">
+                                <i class="fab fa-cc-visa text-gray-400 text-xl"></i>
+                                <i class="fab fa-cc-mastercard text-gray-400 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-8">
+                        <div class="w-1/2 input-group group">
+                            <label for="expiry" class="block text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 transition-colors group-focus-within:text-black">Expiry</label>
+                            <input id="expiry" name="expiry" type="text" required class="block w-full border-b border-gray-200 py-3 text-lg font-medium text-gray-900 placeholder-gray-200 focus:outline-none focus:border-black transition-colors bg-transparent" placeholder="MM/YY">
+                        </div>
+                        <div class="w-1/2 input-group group">
+                            <label for="cvc" class="block text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 transition-colors group-focus-within:text-black">CVC</label>
+                            <div class="relative">
+                                <input id="cvc" name="cvc" type="text" required class="block w-full border-b border-gray-200 py-3 text-lg font-medium text-gray-900 placeholder-gray-200 focus:outline-none focus:border-black transition-colors bg-transparent" placeholder="123">
+                                <i class="fas fa-question-circle absolute right-0 top-4 text-gray-300 text-xs hover:text-black cursor-help transition-colors"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group group">
+                        <label for="card-holder" class="block text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-2 transition-colors group-focus-within:text-black">Cardholder Name</label>
+                        <input id="card-holder" name="card-holder" type="text" required class="block w-full border-b border-gray-200 py-3 text-lg font-medium text-gray-900 placeholder-gray-200 focus:outline-none focus:border-black transition-colors bg-transparent" placeholder="NAME ON CARD">
+                    </div>
+                </div>
+
+                <div class="pt-8">
+                    <button type="submit" class="w-full flex justify-between items-center py-5 px-6 bg-black text-white hover:bg-gray-900 transition-all duration-300 group">
+                        <span class="text-xs font-bold uppercase tracking-widest">Pay Securely</span>
+                        <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+                
+                <div class="text-center">
+                    <a href="index.html" class="text-[10px] font-bold text-gray-400 hover:text-black uppercase tracking-widest transition-colors">
+                        Cancel & Return
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50 backdrop-blur-sm">
+        <div class="bg-white p-10 text-center max-w-sm mx-4 shadow-2xl relative">
+            <div class="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-6">
+                <i class="fas fa-check text-2xl"></i>
+            </div>
+            <h3 class="serif-font text-3xl mb-2">Order Confirmed</h3>
+            <p class="text-gray-500 mb-8 text-sm leading-relaxed">Thank you for your purchase. A confirmation email has been sent to you.</p>
+            <button onclick="window.location.href='index.html'" class="w-full bg-black text-white py-3 text-xs font-bold uppercase tracking-widest hover:bg-gray-800 transition-colors">
+                Continue Shopping
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function processPayment() {
+            const btn = document.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin mr-2"></i> Processing';
+            btn.disabled = true;
+            btn.classList.add('opacity-75');
+            
+            setTimeout(() => {
+                document.getElementById('success-modal').style.display = 'flex';
+                // Simple entrance animation for modal content
+                const modalContent = document.querySelector('#success-modal > div');
+                modalContent.style.opacity = '0';
+                modalContent.style.transform = 'translateY(20px)';
+                
+                // Trigger reflow
+                void modalContent.offsetWidth;
+                
+                modalContent.style.transition = 'all 0.5s ease-out';
+                modalContent.style.opacity = '1';
+                modalContent.style.transform = 'translateY(0)';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
